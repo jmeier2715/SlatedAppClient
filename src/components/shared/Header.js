@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
-    color: 'white',
+    color: 'black',
     textDecoration: 'none'
 }
 const authenticatedOptions = (
@@ -16,6 +16,11 @@ const authenticatedOptions = (
 		<Nav.Link>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='translations' style={linkStyle}>
+				Your Translations
 			</Link>
 		</Nav.Link>
 	</>
@@ -46,7 +51,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                react-auth-template
+                -Slated
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
