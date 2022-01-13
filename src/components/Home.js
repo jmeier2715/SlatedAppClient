@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import user from '../App.js'
 
 const Home = (props) => {
 	// const { msgAlert, user } = props
 	// console.log('props in home', props)
-
+	console.log(props.user)
 	//translation submission states
 	const [newQ, setNewQ] = useState({
 		q: ""
@@ -41,6 +42,17 @@ const Home = (props) => {
 		// console.log (newTarget)
 	}
 	
+	//to show the button that saves translations and adds it to collections
+	const authenticatedOptions =(
+		<>
+		<button>add translation</button>
+		</>
+	)
+	const unauthenticatedOptions=(
+		<>
+		</>
+	)
+
 	const translate = (e) =>{
 		e.preventDefault()
 		fetch("https://translate.argosopentech.com/translate", {
@@ -87,6 +99,7 @@ const Home = (props) => {
 					<option value="es" name="Spanish">Spanish</option>
 				</select>
 			</form>
+			{props.user == null ? unauthenticatedOptions : authenticatedOptions}
 		</div>
 		
 	)
