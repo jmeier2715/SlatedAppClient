@@ -34,7 +34,6 @@ const SignIn = (props) => {
         const credentials = {email, password}
 
 		signIn(credentials)
-            console.log('credentials', credentials)
 			.then((res) => setUser(res.data.user))
 			.then(() =>
 				msgAlert({
