@@ -44,6 +44,29 @@ const App = () => {
 		})
 	}
 
+	const [allTranslations, setAllTranslations] = useState([])
+
+	let testTranslations = []
+
+	// allTranslations.map((object)=>{
+	// 	setAllTranslations(object)
+	// })
+
+	const getAllTranslations = () => {
+		fetch("http://localhost:8000/translations")
+		.then(response => {
+			return response.json()
+		})
+		.then(foundTranslations =>{
+			// console.log('roottext', foundTranslations.translations[2].rootText)
+			console.log('foundTranslations', foundTranslations)
+			testTranslations = foundTranslations.translations
+			setAllTranslations(foundTranslations.translations)
+			
+            
+		})
+		.catch(error => console.log(error))
+	}
 
 
 		return (
@@ -60,7 +83,7 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-			<Route path='/translations' element={<YourTranslations onClick={getAllTranslations} user={user} allTranslations={allTranslations} getAllTranslations={getAllTranslations} msgAlert={msgAlert} user={user}/>} />
+			<Route path='/translations' element={<YourTranslations testTranslations={testTranslations} user={user} allTranslations={allTranslations} getAllTranslations={getAllTranslations} msgAlert={msgAlert} user={user}/>} />
           <Route
             path='/sign-out'
             element={

@@ -3,31 +3,34 @@ import user from '../App.js'
 import AddCollection from './AddCollection.js'
 
 const YourTranslations = (props) =>{
+    const test = ()=>{
+        props.testTranslations.map ((object)=>{
+            console.log('this works')    
+            return (<p>{object.rootText}</p> )
+            })
+    }  
 
-    const [allTranslations, setAllTranslations] = useState([])
+    useEffect(() => {
+        props.getAllTranslations()
+        test()
+    },[])
+    
+   
 
-	const getAllTranslations = () => {
-		fetch("http://localhost:8000/translations")
-		.then(response => {
-			return response.json()
-		})
-		.then(foundTranslations =>{
-			console.log('these are the droids', foundTranslations.translations)
-			
-            setAllTranslations (JSON.stringify(foundTranslations.translations))
-		})
-		.catch(error => console.log(error))
-
-	}
-    getAllTranslations()
-
-    console.log('this be it', allTranslations)
+    // props.getAllTranslations()
+    console.log(props.allTranslations)
+    let y = props.allTranslations
+    let yMap = y.map((object)=>{
+        return(<p>{object.rootText}</p>)
+    })
+    
+    console.log('this is y', y)
+  
     
     return(
         
         <>
-        {getAllTranslations}
-         {allTranslations}
+         {yMap}
         </>
        
     )
