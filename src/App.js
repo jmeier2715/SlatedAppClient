@@ -14,6 +14,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import { stringify } from 'uuid'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -42,24 +43,7 @@ const App = () => {
       )
 		})
 	}
-	const [allTranslations, setAllTranslations] = useState([])
-	const getAllTranslations = (props) => {
-		fetch("http://localhost:8000/translations",{
-			headers:{
-				"Content-Type": "application/json",
-                "Authorization": `Bearer ${user.token}`
-			}
-		})
-		.then(response => {
-			return response.json()
-		})
-		.then(foundTranslations =>{
-			setAllTranslations (foundTranslations.translations)
-			console.log('this is alltrans', allTranslations)
-			console.log("first", allTranslations[0].targetText)
-		})
-		.catch(error => console.log(error))
-	}
+
 
 
 		return (
@@ -76,7 +60,7 @@ const App = () => {
 						path='/sign-in'
 						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 					/>
-			<Route path='/translations' element={<YourTranslations user={user} getAllTranslations={getAllTranslations} msgAlert={msgAlert} user={user}/>} />
+			<Route path='/translations' element={<YourTranslations onClick={getAllTranslations} user={user} allTranslations={allTranslations} getAllTranslations={getAllTranslations} msgAlert={msgAlert} user={user}/>} />
           <Route
             path='/sign-out'
             element={
