@@ -88,7 +88,7 @@ const Home = (props) => {
 	
 	const translate = (e) =>{
 		e.preventDefault()
-		fetch("https://translate.argosopentech.com/translate", {
+		fetch("https://trans.zillyhuhn.com/translate", {
 			method: "POST",
 			body: JSON.stringify({
 				q: newQ.q,
@@ -101,6 +101,7 @@ const Home = (props) => {
 			return responseData.json()
 		})
 		.then((jsonData)=>{
+			console.log('response')
 			setTranslation({
 				response: JSON.stringify(jsonData.translatedText)
 			})

@@ -68,3 +68,12 @@
     background-color: #ff6f61;
     color: white;
 }
+.ymap{
+    border-radius: 20px;
+    background-color: #ff6f61;
+    color: white;
+    text-align: center;
+}
+.yBody{
+    padding-top:3%;
+}

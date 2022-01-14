@@ -3,25 +3,26 @@ import user from '../App.js'
 import AddCollection from './AddCollection.js'
 
 const YourTranslations = (props) =>{
-    const test = ()=>{
-        props.testTranslations.map ((object)=>{
-            console.log('this works')    
-            return (<p>{object.rootText}</p> )
-            })
-    }  
 
     useEffect(() => {
         props.getAllTranslations()
-        test()
+    
     },[])
     
-   
-
+   //add button set value = y._id
+   //add onclick w delete rooute
+   //string interpolate into the params
+   //
     // props.getAllTranslations()
     console.log(props.allTranslations)
     let y = props.allTranslations
     let yMap = y.map((object)=>{
-        return(<p>{object.rootText}</p>)
+        return(
+        <div class= 'ymap'>
+        <p >{object.rootText}</p>
+        <p>{object.targetText}</p>    
+        </div>
+        )
     })
     
     console.log('this is y', y)
@@ -29,9 +30,10 @@ const YourTranslations = (props) =>{
     
     return(
         
-        <>
-         {yMap}
-        </>
+      <div class="yBody">
+           {yMap}
+      </div>
+
        
     )
 }
